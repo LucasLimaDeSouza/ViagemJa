@@ -10,16 +10,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import kotlinx.coroutines.delay
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.sp
 
 @Preview
 @Composable
 fun DynamicTextPreview(){
-    DynamicText(fullText = "Texto dinamico", renderTime = 100L, modifier = Modifier)
+    DynamicText(fullText = "Texto dinamico", renderTime = 100L, modifier = Modifier, color = Color.Green)
 }
 
 
 @Composable
-fun DynamicText(fullText: String, renderTime: Long, modifier: Modifier ) {
+fun DynamicText(fullText: String, renderTime: Long, modifier: Modifier, color: Color) {
     var dynamicText by remember { mutableStateOf("") }
 
     LaunchedEffect(fullText) {
@@ -31,7 +33,11 @@ fun DynamicText(fullText: String, renderTime: Long, modifier: Modifier ) {
 
     Text(
         text = dynamicText,
-        modifier = modifier
+        modifier = modifier,
+        fontSize = 24.sp,
+        fontFamily = androidx.compose.ui.text.font.FontFamily.SansSerif,
+        fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
+        color = color
     )
 
 }

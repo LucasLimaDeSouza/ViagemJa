@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.viagemja.ui.components.LeafletMapComponent
-import com.example.viagemja.ui.screens.ScreenMap
+import com.example.viagemja.ui.screens.Welcome
+
 
 class MainActivity() : ComponentActivity() {
 
@@ -14,7 +14,7 @@ class MainActivity() : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ScreenMap()
+            Welcome()
         }
     }
 }
