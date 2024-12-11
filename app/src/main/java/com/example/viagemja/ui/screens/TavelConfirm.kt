@@ -10,20 +10,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.viagemja.ui.components.ButtonBackScreen
 import com.example.viagemja.ui.components.ButtonComponent
-import com.example.viagemja.ui.components.DynamicText
-import com.example.viagemja.ui.components.InputComponent
-import com.example.viagemja.ui.components.TravelHistory
+import com.example.viagemja.ui.components.CardTravelHistory
 import com.example.viagemja.ui.theme.BlueV
-import com.example.viagemja.ui.theme.GreenV
 
 @Preview
 @Composable
@@ -71,7 +66,7 @@ fun TravelConfirm() {
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                TravelHistory()
+                CardTravelHistory()
             }
 
         }

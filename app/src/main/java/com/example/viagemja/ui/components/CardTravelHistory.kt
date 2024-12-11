@@ -1,9 +1,7 @@
 package com.example.viagemja.ui.components
 
-import android.util.EventLogTags
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,12 +20,12 @@ import androidx.compose.ui.unit.sp
 
 @Preview
 @Composable
-fun TravelHistoryPreview() {
-    TravelHistory()
+fun CardTravelHistoryPreview() {
+    CardTravelHistory()
 }
 
 @Composable
-fun TravelHistory() {
+fun CardTravelHistory() {
 
     Card(
         modifier = Modifier
