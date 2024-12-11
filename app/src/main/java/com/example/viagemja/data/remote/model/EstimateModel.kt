@@ -1,6 +1,6 @@
-package com.example.viagemja.model
+package com.example.viagemja.data.remote.model
 
-data class LocationModel(
+data class EstimateModel(
     val name: String,
     val latitude: Double,
     val longitude: Double
