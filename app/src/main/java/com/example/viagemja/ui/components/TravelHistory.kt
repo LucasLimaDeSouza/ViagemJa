@@ -20,23 +20,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun TravelHistoryPreview() {
     TravelHistory()
 }
 
 @Composable
-fun TravelHistory(
-
-) {
+fun TravelHistory() {
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.White)
             .height(486.dp),
-
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White,
+        )
         ) {
         Column(
             modifier = Modifier

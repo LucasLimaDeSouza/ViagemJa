@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,16 +21,18 @@ import com.example.viagemja.ui.components.ButtonBackScreen
 import com.example.viagemja.ui.components.ButtonComponent
 import com.example.viagemja.ui.components.DynamicText
 import com.example.viagemja.ui.components.InputComponent
+import com.example.viagemja.ui.components.TravelHistory
 import com.example.viagemja.ui.theme.BlueV
 import com.example.viagemja.ui.theme.GreenV
-@Preview(showBackground = true)
+
+@Preview
 @Composable
-fun OriginDestinationPreview() {
-    OriginDestination()
+fun TravelConfirmPreview(){
+    TravelConfirm()
 }
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
-fun OriginDestination() {
+fun TravelConfirm() {
     Scaffold(
         topBar = {
             Box(
@@ -48,7 +49,7 @@ fun OriginDestination() {
                     .padding(0.dp,5.dp)
             ) {
                 ButtonComponent(
-                    "Continuar",
+                    "Confirmar Viagem",
                     modifier = Modifier
                         .height(91.dp)
                         .fillMaxWidth(),
@@ -68,38 +69,11 @@ fun OriginDestination() {
             Spacer(modifier = Modifier.height(80.dp))
             Box(
                 modifier = Modifier
-                    .height(319.dp)
+                    .fillMaxSize()
             ) {
-                DynamicText(
-                    "Seja muito bem vindo(a) Lucas \n" +
-                            "Para começar, \n" +
-                            "diga a origem e destino de sua viagem " +
-                            "abaixo.",
-                    10L,
-                    Modifier
-                        .padding(40.dp)
-                        .fillMaxSize(),
-                    GreenV
-                )
+                TravelHistory()
             }
-            InputComponent(onValueChange = {}, label = "Origem")
-            Spacer(modifier = Modifier.height(20.dp))
-            InputComponent(onValueChange = {}, label = "Destino")
-            Spacer(modifier = Modifier.height(20.dp))
-            Text(
-                text = "Valor Estimado:",
-                fontSize = 24.sp,
-                fontFamily = androidx.compose.ui.text.font.FontFamily.SansSerif,
-                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
-                color = BlueV
-            )
-            Text(
-                text = "50.05 - 50.05",
-                fontSize = 16.sp,
-                fontFamily = androidx.compose.ui.text.font.FontFamily.SansSerif,
-                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
-                color = GreenV
-            )
+
         }
     }
 }
