@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.viagemja.ui.theme.BlueV
 import com.example.viagemja.ui.theme.GreyV
 import com.example.viagemja.utils.NameDriverUtils
@@ -35,6 +36,7 @@ import com.example.viagemja.utils.NameDriverUtils
 @Composable
 fun CardDriverPreview() {
     CardDriver(
+        navController = null,
         name = "Homer Simpson",
         car = "Plymouth Valiant 1973 rosa e enferrujado",
         description = "Olá! Sou o Homer, seu motorista camarada! Relaxe e aproveite o passeio," +
@@ -46,6 +48,7 @@ fun CardDriverPreview() {
 
 @Composable
 fun CardDriver(
+    navController: NavController?,
     name: String,
     car: String,
     description: String,
@@ -133,7 +136,9 @@ fun CardDriver(
                 }
             }
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    navController?.navigate("travelConfirm")
+                },
                 modifier = Modifier
                     .fillMaxSize(),
                 shape = RectangleShape,

@@ -9,30 +9,27 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.viagemja.ui.components.ButtonBackScreen
-import com.example.viagemja.ui.components.ButtonComponent
 import com.example.viagemja.ui.components.CardDriver
 import com.example.viagemja.ui.components.DynamicText
-import com.example.viagemja.ui.theme.BlueV
 import com.example.viagemja.ui.theme.GreenV
 
 
 @Preview
 @Composable
 fun DriversPreview(){
-    Drivers()
+    Drivers(navController = null)
 }
 @Composable
-fun Drivers(){
+fun Drivers(navController: NavHostController?) {
+    val navController = navController
     Scaffold(
         topBar = {
             Box(
@@ -40,7 +37,9 @@ fun Drivers(){
                     .fillMaxWidth()
                     .padding(36.dp)
             ) {
-                ButtonBackScreen(onClick = {})
+                ButtonBackScreen(onClick = {
+                    navController?.navigate("originDestination")
+                })
             }
         }
     ) { padding ->
@@ -75,6 +74,7 @@ fun Drivers(){
                 ) {
                     items(3) {
                         CardDriver(
+                            navController,
                             name = "Homer Simpson",
                             car = "Plymouth Valiant 1973 rosa e enferrujado",
                             description = "Olá! Sou o Homer, seu motorista camarada! Relaxe e aproveite o passeio," +

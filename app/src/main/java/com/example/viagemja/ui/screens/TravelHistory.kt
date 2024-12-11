@@ -1,5 +1,6 @@
 package com.example.viagemja.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,8 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,22 +21,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.viagemja.ui.components.ButtonBackScreen
 import com.example.viagemja.ui.components.ButtonComponent
 import com.example.viagemja.ui.components.CardTravelHistory
 import com.example.viagemja.ui.components.InputComponent
 import com.example.viagemja.ui.theme.BlueV
 import com.example.viagemja.ui.theme.GreenV
+import com.example.viagemja.ui.theme.RedV
 
 @Preview
 @Composable
 fun TravelHistoryPreview() {
-    TravelHistory()
+    TravelHistory(navController = null)
 }
 
 
 @Composable
-fun TravelHistory() {
+fun TravelHistory(navController: NavHostController?) {
+    val navController = navController
     Scaffold(
         topBar = {
             Row(
@@ -54,7 +56,17 @@ fun TravelHistory() {
                     fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
                     color = GreenV
                 )
-                ButtonBackScreen(onClick = {})
+                Text(
+                    text = "Sair",
+                    fontSize = 24.sp,
+                    fontFamily = androidx.compose.ui.text.font.FontFamily.SansSerif,
+                    fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
+                    color = RedV,
+                    modifier = Modifier.clickable {
+                        navController?.navigate("welcome")
+                    }
+                )
+
             }
         }
     ) { padding ->

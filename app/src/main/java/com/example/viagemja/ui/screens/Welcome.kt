@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.viagemja.ui.components.ButtonComponent
 import com.example.viagemja.ui.components.DynamicText
 import com.example.viagemja.ui.components.InputComponent
@@ -25,12 +26,13 @@ import com.example.viagemja.ui.theme.GreenV
 @Preview(showBackground = true)
 @Composable
 fun WelcomePreview(){
-    Welcome()
+    Welcome(navController = null)
 }
 
 
 @Composable
-fun Welcome(){
+fun Welcome(navController: NavHostController?) {
+    val navController = navController
     Scaffold(
         bottomBar = {
             BottomAppBar(
@@ -44,7 +46,9 @@ fun Welcome(){
                         .height(91.dp)
                         .fillMaxWidth(),
                     BlueV,
-                    onClick = {}
+                    onClick = {
+                        navController?.navigate("originDestination")
+                    }
                 )
             }
 

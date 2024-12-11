@@ -4,10 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.viagemja.ui.screens.Drivers
-import com.example.viagemja.ui.screens.OriginDestination
-import com.example.viagemja.ui.screens.TravelHistory
-import com.example.viagemja.ui.screens.Welcome
+import com.example.viagemja.ui.navigation.MyNavigation
 
 
 class MainActivity() : ComponentActivity() {
@@ -17,7 +14,7 @@ class MainActivity() : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            TravelHistory()
+            MyNavigation()
         }
     }
 }

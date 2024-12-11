@@ -17,21 +17,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.viagemja.ui.components.ButtonBackScreen
 import com.example.viagemja.ui.components.ButtonComponent
 import com.example.viagemja.ui.components.DynamicText
-import com.example.viagemja.ui.components.InputComponent
 import com.example.viagemja.ui.theme.BlueV
 import com.example.viagemja.ui.theme.GreenV
 
 @Preview
 @Composable
 fun AcceptedTravelPreview(){
-    AcceptedTravel()
+    AcceptedTravel(navController = null)
 }
 
 @Composable
-fun AcceptedTravel(){
+fun AcceptedTravel(navController: NavHostController?) {
+    val navController = navController
     Scaffold(
         topBar = {
             Box(
@@ -39,7 +40,9 @@ fun AcceptedTravel(){
                     .fillMaxWidth()
                     .padding(36.dp)
             ) {
-                ButtonBackScreen(onClick = {})
+                ButtonBackScreen(onClick = {
+                    navController?.navigate("originDestination")
+                })
             }
         },
         bottomBar = {
@@ -55,7 +58,9 @@ fun AcceptedTravel(){
                         .height(91.dp)
                         .fillMaxWidth(),
                     BlueV,
-                    onClick = {}
+                    onClick = {
+                        navController?.navigate("drivers")
+                    }
                 )
             }
 

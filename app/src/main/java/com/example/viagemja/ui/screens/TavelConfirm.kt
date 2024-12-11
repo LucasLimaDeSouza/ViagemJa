@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.viagemja.ui.components.ButtonBackScreen
 import com.example.viagemja.ui.components.ButtonComponent
 import com.example.viagemja.ui.components.CardTravelHistory
@@ -23,11 +24,12 @@ import com.example.viagemja.ui.theme.BlueV
 @Preview
 @Composable
 fun TravelConfirmPreview(){
-    TravelConfirm()
+    TravelConfirm(navController = null)
 }
 
 @Composable
-fun TravelConfirm() {
+fun TravelConfirm(navController: NavHostController?) {
+    val navController = navController
     Scaffold(
         topBar = {
             Box(
@@ -35,7 +37,9 @@ fun TravelConfirm() {
                     .fillMaxWidth()
                     .padding(36.dp)
             ) {
-                ButtonBackScreen(onClick = {})
+                ButtonBackScreen(onClick = {
+                    navController?.navigate("drivers")
+                })
             }
         },
         bottomBar = {
@@ -49,7 +53,9 @@ fun TravelConfirm() {
                         .height(91.dp)
                         .fillMaxWidth(),
                     BlueV,
-                    onClick = {}
+                    onClick = {
+                        navController?.navigate("travelHistory")
+                    }
                 )
             }
         }

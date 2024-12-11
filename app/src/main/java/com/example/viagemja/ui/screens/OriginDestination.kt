@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.viagemja.ui.components.ButtonBackScreen
 import com.example.viagemja.ui.components.ButtonComponent
 import com.example.viagemja.ui.components.DynamicText
@@ -27,11 +28,12 @@ import com.example.viagemja.ui.theme.GreenV
 @Preview(showBackground = true)
 @Composable
 fun OriginDestinationPreview() {
-    OriginDestination()
+    OriginDestination(navController = null)
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun OriginDestination() {
+fun OriginDestination(navController: NavHostController?) {
+    val navController = navController
     Scaffold(
         topBar = {
             Box(
@@ -39,7 +41,9 @@ fun OriginDestination() {
                     .fillMaxWidth()
                     .padding(36.dp)
             ) {
-                ButtonBackScreen(onClick = {})
+                ButtonBackScreen(onClick = {
+                    navController?.navigate("welcome")
+                })
             }
         },
         bottomBar = {
@@ -53,7 +57,9 @@ fun OriginDestination() {
                         .height(91.dp)
                         .fillMaxWidth(),
                     BlueV,
-                    onClick = {}
+                    onClick = {
+                        navController?.navigate("acceptedTravel")
+                    }
                 )
             }
         }
@@ -65,7 +71,7 @@ fun OriginDestination() {
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(80.dp))
+            //Spacer(modifier = Modifier.height(80.dp))
             Box(
                 modifier = Modifier
                     .height(319.dp)

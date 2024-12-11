@@ -4,6 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 val GreenV = Color(0xFF3BCA79)
 val BlueV = Color(0xFF1E2044)
+val RedV = Color(0xFFCA3B3D)
 val WhiteV = Color(0xFFD9D9D9)
 val GreyV = Color(0xFFB5B5B5)
 
