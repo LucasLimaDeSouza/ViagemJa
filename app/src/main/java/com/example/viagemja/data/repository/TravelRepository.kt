@@ -5,7 +5,7 @@ import com.example.viagemja.data.remote.model.ApiResponse
 import com.example.viagemja.data.remote.model.ConfirmeTravelModel
 import com.example.viagemja.data.remote.model.DriverRequest
 import com.example.viagemja.data.remote.model.EstimateModel
-import com.example.viagemja.data.remote.model.TravelsModel
+import com.example.viagemja.data.remote.model.TravelsRequestModel
 
 class TravelRepository {
     suspend fun estimateTravel(estimate: EstimateModel): DriverRequest? {
@@ -28,7 +28,7 @@ class TravelRepository {
         }
     }
 
-    suspend fun getTravels(customerId: String, driverId: Int): List<TravelsModel>? {
+    suspend fun getTravels(customerId: String, driverId: Int): TravelsRequestModel? {
         return try {
             val response = RetrofitInstance.api.getTravels(customerId, driverId)
             response

@@ -88,9 +88,9 @@ fun TravelHistory(navController: NavHostController?) {
                     verticalArrangement = Arrangement.Top,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    InputComponent("Passageiro(a)", onValueChange = {})
+                    InputComponent(value = "", "Passageiro(a)", onValueChange = {})
                     Spacer(modifier = Modifier.height(29.dp))
-                    InputComponent("Motorista", onValueChange = {})
+                    InputComponent(value = "", "Motorista", onValueChange = {})
                     Spacer(modifier = Modifier.height(49.dp))
                     Row(
                         modifier = Modifier

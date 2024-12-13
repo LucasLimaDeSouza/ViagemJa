@@ -1,6 +1,5 @@
 package com.example.viagemja.data.remote.api
 
-import com.example.viagemja.data.remote.model.TravelsModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

@@ -1,7 +1,7 @@
 package com.example.viagemja.utils
 
 import com.example.viagemja.data.remote.model.EstimateModel
-
+/*
 public fun generateLeafletMapHtml(locations : List<EstimateModel>): String {
     val markers = locations.joinToString(separator = ",") { location ->
         "L.marker([${location.latitude}, ${location.longitude}]).addTo(map).bindPopup('${location.name}');"
@@ -43,4 +43,4 @@ public fun generateLeafletMapHtml(locations : List<EstimateModel>): String {
         </body>
         </html>
     """.trimIndent()
-}
+}*/

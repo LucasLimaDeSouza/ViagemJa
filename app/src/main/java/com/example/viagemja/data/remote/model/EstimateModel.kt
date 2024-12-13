@@ -1,7 +1,9 @@
 package com.example.viagemja.data.remote.model
 
+import com.google.gson.annotations.SerializedName
+
 data class EstimateModel(
-    val name: String,
-    val latitude: Double,
-    val longitude: Double
+    @SerializedName("customer_id") val name: String,
+    val origin: String,
+    val destination: String
 )

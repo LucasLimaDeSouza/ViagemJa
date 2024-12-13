@@ -9,14 +9,14 @@ import androidx.compose.ui.tooling.preview.Preview
 @Preview
 @Composable
 fun InputComponentPreview() {
-    InputComponent(label = "Texto", onValueChange = {})
+    InputComponent(value = "Texto", label = "Texto", onValueChange = {})
 }
 
 
 @Composable
-fun InputComponent(label: String, onValueChange: (String) -> Unit) {
+fun InputComponent(value : String, label: String, onValueChange: (String) -> Unit) {
     TextField(
-        value = "",
+        value = value,
         onValueChange = onValueChange,
         label = { Text(label) },
         shape = Shapes().large,

@@ -13,27 +13,54 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.viagemja.data.remote.model.EstimateModel
 import com.example.viagemja.ui.components.ButtonBackScreen
 import com.example.viagemja.ui.components.ButtonComponent
 import com.example.viagemja.ui.components.DynamicText
 import com.example.viagemja.ui.components.InputComponent
 import com.example.viagemja.ui.theme.BlueV
 import com.example.viagemja.ui.theme.GreenV
+import com.example.viagemja.viewmodel.TravelViewModel
+
 @Preview(showBackground = true)
 @Composable
 fun OriginDestinationPreview() {
-    OriginDestination(navController = null)
+    OriginDestination(name = "alguem", navController = null)
 }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun OriginDestination(navController: NavHostController?) {
+fun OriginDestination(
+    name: String,
+    navController: NavHostController?,
+    viewModel: TravelViewModel = viewModel()
+) {
     val navController = navController
+    val viewModel by remember { mutableStateOf(viewModel) }
+    var origin by remember { mutableStateOf("") }
+    var destiny by remember { mutableStateOf("") }
+
+    fun estimateFun() {
+        viewModel.estimateTravel(
+            EstimateModel(
+                "CT01",
+                "Av. Pres. Kenedy, 2385 - Remédios, Osasco - SP, 02675-031",
+                "Av. Paulista, 1538 - Bela Vista, São Paulo - SP, 01310-200"
+            )
+        )
+    }
+
     Scaffold(
         topBar = {
             Box(
@@ -49,7 +76,7 @@ fun OriginDestination(navController: NavHostController?) {
         bottomBar = {
             BottomAppBar(
                 modifier = Modifier
-                    .padding(0.dp,5.dp)
+                    .padding(0.dp, 5.dp)
             ) {
                 ButtonComponent(
                     "Continuar",
@@ -58,6 +85,7 @@ fun OriginDestination(navController: NavHostController?) {
                         .fillMaxWidth(),
                     BlueV,
                     onClick = {
+                        estimateFun()
                         navController?.navigate("acceptedTravel")
                     }
                 )
@@ -77,7 +105,7 @@ fun OriginDestination(navController: NavHostController?) {
                     .height(319.dp)
             ) {
                 DynamicText(
-                    "Seja muito bem vindo(a) Lucas \n" +
+                    "Seja muito bem vindo(a) $name \n" +
                             "Para começar, \n" +
                             "diga a origem e destino de sua viagem " +
                             "abaixo.",
@@ -88,10 +116,21 @@ fun OriginDestination(navController: NavHostController?) {
                     GreenV
                 )
             }
-            InputComponent(onValueChange = {}, label = "Origem")
+            InputComponent(
+                value = origin,
+                onValueChange = {
+                    origin = it
+                }, label = "Origem"
+            )
             Spacer(modifier = Modifier.height(20.dp))
-            InputComponent(onValueChange = {}, label = "Destino")
+            InputComponent(
+                value = destiny, onValueChange = {
+                    destiny = it
+                },
+                label = "Destino"
+            )
             Spacer(modifier = Modifier.height(20.dp))
+
             Text(
                 text = "Valor Estimado:",
                 fontSize = 24.sp,
@@ -99,13 +138,16 @@ fun OriginDestination(navController: NavHostController?) {
                 fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
                 color = BlueV
             )
+
             Text(
-                text = "50.05 - 50.05",
+                text = "valor baixo - valor alto",
                 fontSize = 16.sp,
                 fontFamily = androidx.compose.ui.text.font.FontFamily.SansSerif,
                 fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
                 color = GreenV
             )
+
+
         }
     }
 }
