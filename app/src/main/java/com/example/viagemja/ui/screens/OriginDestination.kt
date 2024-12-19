@@ -13,12 +13,15 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -47,9 +50,15 @@ fun OriginDestination(
     viewModel: TravelViewModel = viewModel()
 ) {
     val navController = navController
-    val viewModel by remember { mutableStateOf(viewModel) }
+
+    val estimateFlow by viewModel.estimate.collectAsState()
     var origin by remember { mutableStateOf("") }
     var destiny by remember { mutableStateOf("") }
+
+
+    val firstValueRiderGet = estimateFlow?.options[0]?.value.toString()
+    val lastValueRiderGet = estimateFlow?.options?.lastOrNull()?.value.toString()
+
 
     fun estimateFun() {
         viewModel.estimateTravel(
@@ -86,7 +95,7 @@ fun OriginDestination(
                     BlueV,
                     onClick = {
                         estimateFun()
-                        navController?.navigate("acceptedTravel")
+                        //navController?.navigate("acceptedTravel")
                     }
                 )
             }
@@ -99,7 +108,6 @@ fun OriginDestination(
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            //Spacer(modifier = Modifier.height(80.dp))
             Box(
                 modifier = Modifier
                     .height(319.dp)
@@ -134,16 +142,16 @@ fun OriginDestination(
             Text(
                 text = "Valor Estimado:",
                 fontSize = 24.sp,
-                fontFamily = androidx.compose.ui.text.font.FontFamily.SansSerif,
-                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.SemiBold,
                 color = BlueV
             )
 
             Text(
-                text = "valor baixo - valor alto",
+                text = "$firstValueRiderGet - $lastValueRiderGet",
                 fontSize = 16.sp,
-                fontFamily = androidx.compose.ui.text.font.FontFamily.SansSerif,
-                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.SemiBold,
                 color = GreenV
             )
 

@@ -1,5 +1,6 @@
 package com.example.viagemja.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
@@ -28,14 +29,18 @@ class TravelViewModel : ViewModel() {
     private val _confirmTravel = mutableStateOf<ApiResponse?>(null)
     val confirmTravel: State<ApiResponse?> = _confirmTravel
 
-    private val _rideName = mutableStateOf("")
-    val rideName: State<String> get() = _rideName
+
 
 
      fun estimateTravel(estimate: EstimateModel) {
             viewModelScope.launch {
+                try {
+
                 val result = travelRepository.estimateTravel(estimate)
                 _estimate.value = result
+                } catch (e: Exception) {
+                    Log.d("Estimate Travel", "Error estimating travel", e)
+                }
             }
     }
 

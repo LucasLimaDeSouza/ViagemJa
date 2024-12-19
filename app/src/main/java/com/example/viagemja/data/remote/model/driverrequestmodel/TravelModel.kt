@@ -1,7 +1,10 @@
 package com.example.viagemja.data.remote.model.driverrequestmodel
 
 import com.example.viagemja.data.remote.model.DriverRequest
+import kotlinx.serialization.Serializable
 
+
+@Serializable
 data class TravelModel(
     val id: Int,
     val date: String,

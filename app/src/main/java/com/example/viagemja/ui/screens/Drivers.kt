@@ -11,11 +11,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,7 +26,7 @@ import com.example.viagemja.ui.components.CardDriver
 import com.example.viagemja.ui.components.DynamicText
 import com.example.viagemja.ui.theme.GreenV
 import com.example.viagemja.viewmodel.TravelViewModel
-import com.google.gson.Gson
+
 
 
 @Preview
@@ -39,7 +38,6 @@ fun DriversPreview(){
 fun Drivers(navController: NavHostController?, viewModel: TravelViewModel = viewModel()) {
     val navController = navController
     val viewModel by remember { mutableStateOf(viewModel) }
-    val nameDriver = viewModel.rideName.value
 
     Scaffold(
         topBar = {
@@ -86,7 +84,7 @@ fun Drivers(navController: NavHostController?, viewModel: TravelViewModel = view
                     items(3) {
                         CardDriver(
                             navController,
-                            name = nameDriver,
+                            name = "Homer Simpson",
                             car = "Plymouth Valiant 1973 rosa e enferrujado",
                             description = "Olá! Sou o Homer, seu motorista camarada! Relaxe e aproveite o passeio," +
                                     " com direito a rosquinhas e boas risadas (e talvez alguns desvios).",
